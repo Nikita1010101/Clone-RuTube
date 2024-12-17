@@ -1,12 +1,13 @@
+'use client'
+
 import { FC, useState } from 'react'
+import { Send } from 'lucide-react'
+
 import styles from './Comments.module.scss'
-
-import { IoMdSend } from 'react-icons/io'
-
-import { CommentItem } from './Comment-item/CommentItem'
+import { CommentItem } from './Comment-item/Comment-item'
 import { IComments } from './Comments.interface'
 
-import { useComment } from '@/hooks/useComment'
+// import { useComment } from '@/hooks/useComment'
 
 export const Comments: FC<IComments> = ({
 	avatarPath,
@@ -16,16 +17,10 @@ export const Comments: FC<IComments> = ({
 	comments
 }) => {
 	const [inputValue, setInputValue] = useState<string>('')
-	const { addComment, isLoading } = useComment(
-		avatarPath,
-		userName,
-		inputValue,
-		videoId
-	)
 
 	const additionComment = (): void => {
 		if (inputValue) {
-			addComment()
+			// addComment()
 			setInputValue('')
 		}
 	}
@@ -48,8 +43,10 @@ export const Comments: FC<IComments> = ({
 					type='text'
 					placeholder='Введите комментарий'
 				/>
-				<button onClick={additionComment} disabled={isLoading}>
-					<IoMdSend />
+				<button onClick={additionComment} 
+				// disabled={isLoading}
+				>
+					<Send />
 				</button>
 			</div>
 		</div>

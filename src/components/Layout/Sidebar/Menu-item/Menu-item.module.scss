@@ -1,0 +1,62 @@
+.sidebarItem {
+  @apply w-11/12 my-2 p-2.5 flex items-center rounded-xl transition cursor-pointer hover:bg-gray-700 hover:shadow-md active:bg-gray-800;
+
+  &.active {
+    @apply shadow-md;
+
+    div {
+      @apply opacity-100 bg-tertiary;
+    }
+
+    h2 {
+      @apply text-white overflow-hidden;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+
+      font {
+        @apply text-white;
+      }
+    }
+  }
+
+  div {
+    @apply min-w-[32px] min-h-[32px] mr-4 rounded-xl flex justify-center items-center bg-gray-500 opacity-50;
+  }
+
+  h2 {
+    @apply text-gray-400 text-base font-medium overflow-hidden transition;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    font {
+      @apply text-gray-400 text-base font-medium transition;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .sidebarItem {
+    @apply w-full;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebarItem {
+    @apply w-full;
+    div {
+      @apply mr-0;
+    }
+    h2 {
+      @apply hidden;
+    }
+    &.active {
+      h2 {
+        @apply hidden;
+      }
+    }
+  }
+}

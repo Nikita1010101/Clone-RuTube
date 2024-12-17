@@ -1,0 +1,11 @@
+.search {
+	@apply grid grid-cols-[1fr_50px] justify-items-center w-full h-9 bg-secondary rounded-md shadow-md;
+
+	input {
+		@apply pl-4 w-full text-xs bg-secondary border-none outline-none rounded-md;
+	}
+
+	.searchIcon {
+		@apply w-4 h-full opacity-80;
+	}
+}

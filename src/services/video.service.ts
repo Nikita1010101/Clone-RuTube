@@ -1,13 +1,28 @@
-import { IVideo } from '@/types/video.interface'
-import { axiosClassic } from 'api/axios'
-import { AxiosResponse } from 'axios'
+import axios from 'axios'
+
+import { $axios } from '@/api/axios'
+import { TSuccessRequest } from '@/types/request.types'
+import { TVideo } from '@/types/video.types'
 
 export const VideoService = {
-	async getAll(): Promise<AxiosResponse<IVideo[]>> {
-		return axiosClassic.get<null, AxiosResponse<IVideo[]>>('/video')
-	},
-
-	async getById(id: number): Promise<AxiosResponse<IVideo>> {
-		return axiosClassic.get<number, AxiosResponse<IVideo>>(`/video/${id}`)
-	}
+  async getOne(videoId: number) {
+    return await axios.get<TVideo>(`${process.env.APP_API}/api/video/${videoId}`, {
+      withCredentials: true,
+    })
+  },
+  async updateVideo(body: FormData, setProgress: (value: number) => void) {
+    return await $axios.patch<TSuccessRequest>('/video/update/video', body, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+      onUploadProgress: (progressEvent) => {
+        const progress =
+          (progressEvent.loaded / Number(progressEvent.total)) * 100
+        setProgress(Math.ceil(progress))
+      },
+    })
+  },
+  async updateVideoContent(body: FormData) {
+    return await $axios.patch<TSuccessRequest>('/video/update/content', body, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+  },
 }

@@ -1,0 +1,37 @@
+.myChannel {
+  .wrapper {
+    @apply mb-3 mx-7 w-[90%] h-14 flex justify-between items-center;
+
+    .about {
+      @apply flex items-center;
+
+      .info {
+        @apply ml-7;
+
+        h2 {
+          @apply text-xl font-medium overflow-hidden;
+
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+        }
+
+        h4 {
+          @apply text-xs text-gray-500 font-medium;
+        }
+      }
+    }
+  }
+
+  .description {
+    @apply my-9;
+
+    p {
+      @apply mx-7 w-3/4 overflow-hidden;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
